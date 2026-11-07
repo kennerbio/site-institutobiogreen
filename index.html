@@ -1,0 +1,709 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Instituto Biogreen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FCFAF4;
+  --fg:#020817;
+  --primary:#165A16;
+  --primary-foreground:#FCFAF4;
+  --secondary:#003415;
+  --secondary-foreground:#F8FAFC;
+  --accent:#EEC22A;
+  --accent-foreground:#101F10;
+  --muted:#F2F0E3;
+  --muted-foreground:#020817;
+  --border:#D5D3C6;
+  --kicker-light:rgba(2,8,23,.58);
+  --font-display:'DM Serif Display', Georgia, serif;
+  --font-body:'Manrope', system-ui, sans-serif;
+  --shadow:0 18px 50px -20px rgba(2,8,23,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#FCFAF4; --fg:#020817; --primary:#165A16; --primary-foreground:#FCFAF4;
+    --secondary:#003415; --secondary-foreground:#F8FAFC; --accent:#EEC22A; --accent-foreground:#101F10;
+    --muted:#F2F0E3; --muted-foreground:#020817; --border:#D5D3C6; --kicker-light:rgba(2,8,23,.58);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#FCFAF4; --fg:#020817; --primary:#165A16; --primary-foreground:#FCFAF4;
+  --secondary:#003415; --secondary-foreground:#F8FAFC; --accent:#EEC22A; --accent-foreground:#101F10;
+  --muted:#F2F0E3; --muted-foreground:#020817; --border:#D5D3C6; --kicker-light:rgba(2,8,23,.58);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-body);
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--font-display); font-weight:400; margin:0; line-height:1.12; letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:1180px; margin-inline:auto; padding-inline:max(20px, env(safe-area-inset-left,0px)) max(20px, env(safe-area-inset-right,0px))}
+.italic-accent{font-style:italic}
+.justify{text-align:justify; text-justify:inter-word}
+.section{padding-block:clamp(56px,8vw,108px)}
+.section.dark{background:var(--secondary); color:var(--secondary-foreground)}
+.section.cream{background:var(--bg)}
+.section.muted{background:var(--muted)}
+.kicker{
+  display:inline-flex; align-items:center; gap:10px; font-family:var(--font-body); font-weight:700;
+  font-size:.82rem; letter-spacing:.14em; text-transform:uppercase;
+}
+.kicker.on-dark{color:var(--accent)}
+.kicker.on-light{color:var(--kicker-light)}
+.kicker .rule{width:28px; height:1px; background:currentColor; opacity:.5}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-weight:700;
+  font-size:.92rem; padding:14px 26px; border:1px solid transparent; cursor:pointer; text-decoration:none;
+  letter-spacing:.01em;
+}
+.btn-accent{background:var(--accent); color:var(--accent-foreground)}
+.btn-accent:hover{background:#F3CE55}
+.btn-outline-light{border-color:rgba(248,250,252,.4); color:var(--secondary-foreground)}
+.btn-outline-light:hover{border-color:var(--secondary-foreground)}
+.btn-outline-dark{border-color:var(--border); color:var(--fg)}
+.btn-outline-dark:hover{border-color:var(--fg)}
+
+/* Header */
+header.site{
+  position:sticky; top:0; z-index:50; background:var(--primary);
+  padding-block:max(12px, env(safe-area-inset-top,0px)) 12px;
+}
+header.site .bar{display:flex; align-items:center; justify-content:space-between; gap:16px}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+.brand .logo-box{background:#fff; padding:5px 7px; display:flex; align-items:center}
+.brand .logo-box img{height:34px; width:auto; display:block}
+nav.primary{display:flex; align-items:center; gap:30px}
+nav.primary a{
+  color:var(--primary-foreground); text-decoration:none; font-weight:600; font-size:.94rem;
+  opacity:.88; white-space:nowrap;
+}
+nav.primary a:hover, nav.primary a.active{opacity:1}
+nav.primary .icon-link{opacity:.8; display:flex}
+nav.primary .icon-link:hover{opacity:1}
+.header-actions{display:flex; align-items:center; gap:22px}
+.menu-toggle{display:none; background:none; border:none; color:var(--primary-foreground); cursor:pointer; padding:6px}
+.menu-toggle svg{width:24px; height:24px}
+
+@media (max-width:860px){
+  nav.primary{
+    position:fixed; inset:0 0 0 auto; width:min(84vw,340px); height:100vh; background:var(--secondary);
+    flex-direction:column; align-items:flex-start; justify-content:flex-start; gap:4px; padding:90px 28px 28px;
+    transform:translateX(100%); transition:transform .28s ease; overflow-y:auto;
+  }
+  nav.primary.open{transform:translateX(0)}
+  nav.primary a{font-size:1.1rem; padding:12px 0; width:100%; border-bottom:1px solid rgba(248,250,252,.12); color:var(--secondary-foreground)}
+  nav.primary .icon-link{padding:12px 0}
+  .header-actions .btn-accent{display:none}
+  nav.primary .mobile-cta{display:inline-flex; margin-top:14px}
+  .menu-toggle{display:inline-flex}
+}
+nav.primary .mobile-cta{display:none}
+
+/* Hero */
+.hero{background:var(--primary); color:var(--primary-foreground); padding-block:clamp(50px,9vw,110px) clamp(60px,10vw,120px)}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.6rem); color:var(--primary-foreground)}
+.hero .lead{max-width:46ch; font-size:1.12rem; margin-top:22px; opacity:.92}
+.hero .cta-row{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap}
+.scroll-cue{margin-top:56px; display:flex; align-items:center; gap:10px; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; opacity:.7}
+.scroll-cue svg{width:16px; height:16px}
+
+/* Pillars / Photo cards */
+.intro-cols{display:grid; grid-template-columns:1fr 1fr; gap:40px; max-width:960px; margin-top:28px}
+.pillars{display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:52px; background:var(--border)}
+.pillar{background:var(--bg); position:relative}
+.pillar .photo{aspect-ratio:4/3; overflow:hidden; background:var(--muted)}
+.pillar .photo img{width:100%; height:100%; object-fit:cover}
+.pillar .meta{padding:20px 22px 26px; position:relative}
+.pillar .badge{
+  width:40px; height:40px; border-radius:50%; background:var(--bg); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; position:absolute; top:-20px; left:22px; color:var(--primary);
+}
+.pillar .badge svg{width:19px; height:19px}
+.pillar .num{display:block; font-family:var(--font-body); font-weight:700; color:var(--kicker-light); font-size:.85rem; margin-top:18px}
+.pillar h4{font-family:var(--font-body); font-weight:700; font-size:1.18rem; margin-top:4px}
+
+/* Projects */
+.section.dark-primary{background:var(--primary); color:var(--primary-foreground)}
+.proj-list{display:flex; flex-direction:column; gap:clamp(56px,7vw,96px); margin-top:0}
+.proj-article{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center}
+.proj-article:nth-child(even) .photo-wrap{order:2}
+.proj-article .photo-wrap{position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--muted)}
+.proj-article .photo-wrap img{width:100%; height:100%; object-fit:cover}
+.proj-status{
+  position:absolute; top:18px; left:18px; background:var(--accent); color:var(--accent-foreground);
+  font-weight:800; font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; padding:7px 14px;
+}
+.proj-body{display:flex; flex-direction:column}
+.proj-loc-row{display:flex; align-items:center; gap:10px}
+.proj-loc-row .icon{
+  width:34px; height:34px; border-radius:50%; background:var(--muted); color:var(--primary);
+  display:flex; align-items:center; justify-content:center; flex:none;
+}
+.proj-loc-row .icon svg{width:16px; height:16px}
+.proj-loc{color:var(--kicker-light); font-weight:700; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase}
+.proj-body h3{font-size:clamp(1.5rem,2.6vw,2rem); color:var(--fg); margin-top:14px}
+.proj-body p.desc{margin-top:16px; max-width:48ch; color:var(--kicker-light); font-size:1rem}
+.proj-stats{display:flex; gap:26px; flex-wrap:wrap; margin-top:24px; border-top:1px solid var(--border); padding-top:22px}
+.proj-stats div strong{display:block; font-family:var(--font-display); font-size:1.6rem; color:var(--primary)}
+.proj-stats div span{font-size:.76rem; letter-spacing:.06em; text-transform:uppercase; color:var(--kicker-light)}
+.proj-link{
+  margin-top:24px; display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:.92rem;
+  color:var(--primary); text-decoration:none; width:fit-content; border-bottom:1px solid var(--border);
+  padding-bottom:3px;
+}
+.proj-link svg{width:16px; height:16px; transition:transform .15s ease}
+.proj-link:hover svg{transform:translate(2px,-2px)}
+@media (max-width:760px){
+  .proj-article{grid-template-columns:1fr; gap:22px}
+  .proj-article:nth-child(even) .photo-wrap{order:initial}
+  .proj-list{gap:48px}
+}
+
+/* Methodology */
+.method-head{max-width:640px}
+.method-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:28px; margin-top:38px}
+.method-grid div span{font-family:var(--font-display); font-size:1.5rem; color:var(--accent)}
+.method-grid div h5{font-family:var(--font-body); font-weight:700; margin-top:10px; font-size:1.02rem; color:var(--secondary-foreground)}
+.method-grid div p{margin-top:8px; font-size:.92rem; opacity:.78}
+@media (max-width:760px){.method-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.method-grid{grid-template-columns:1fr}}
+
+/* Atuacao */
+.service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:52px; background:var(--border)}
+.service-card{background:var(--bg); padding:34px 30px}
+.service-card .num{font-family:var(--font-body); font-weight:800; color:var(--border); font-size:1.6rem}
+.service-card h4{font-family:var(--font-body); font-weight:700; font-size:1.1rem; margin-top:14px}
+.service-card p{margin-top:12px; color:var(--kicker-light); font-size:.95rem}
+@media (max-width:760px){.service-grid{grid-template-columns:1fr}}
+
+/* Equipe */
+.team-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:52px; background:var(--border)}
+.team-card{background:var(--bg); padding:26px 20px 30px; text-align:left}
+.avatar{width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.15rem; color:#fff}
+.team-card .role{display:block; font-weight:800; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--kicker-light); margin-top:16px}
+.team-card h4{font-family:var(--font-body); font-weight:700; font-size:1.04rem; margin-top:6px; line-height:1.3}
+.team-card .cred{display:block; margin-top:6px; font-size:.84rem; color:var(--kicker-light)}
+@media (max-width:760px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.team-grid{grid-template-columns:1fr}}
+
+.values-wrap{margin-top:92px; border-top:1px solid var(--border); padding-top:52px}
+.values-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:34px}
+.values-grid div h5{font-family:var(--font-body); font-weight:700; font-size:1.05rem}
+.values-grid div p{margin-top:10px; font-size:.95rem; color:var(--kicker-light)}
+@media (max-width:760px){.values-grid{grid-template-columns:1fr}}
+
+/* Contato */
+.contact-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:48px; background:rgba(248,250,252,.12)}
+.contact-card{background:var(--secondary); padding:28px 26px}
+.contact-card .label{display:flex; align-items:center; gap:9px; font-weight:700; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; opacity:.75}
+.contact-card .value{display:block; margin-top:14px; font-family:var(--font-display); font-size:1.28rem}
+.contact-card .action{margin-top:16px; display:flex}
+.copy-btn{
+  background:transparent; border:1px solid rgba(248,250,252,.35); color:var(--secondary-foreground);
+  font-family:var(--font-body); font-weight:700; font-size:.82rem; padding:9px 16px; cursor:pointer;
+}
+.copy-btn:hover{border-color:var(--secondary-foreground)}
+@media (max-width:760px){.contact-grid{grid-template-columns:1fr}}
+
+footer.site{background:#021F0E; color:rgba(248,250,252,.75); padding-block:40px max(40px, env(safe-area-inset-bottom,0px))}
+footer.site .wrap{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap}
+footer.site .flex-col{display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+footer.site img.logo-white{height:28px; width:auto}
+footer.site .tagline{font-family:var(--font-display); font-style:italic; font-size:1.1rem; color:var(--secondary-foreground)}
+footer.site .fine{font-size:.82rem; line-height:1.6; text-align:right}
+@media (max-width:620px){footer.site .wrap{flex-direction:column; align-items:flex-start}footer.site .fine{text-align:left}}
+
+/* Project detail pages */
+.project-page{padding-block:clamp(40px,6vw,80px)}
+.back-link{
+  display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:.92rem; color:var(--primary);
+  text-decoration:none; margin-bottom:26px;
+}
+.back-link svg{width:17px; height:17px}
+.back-link:hover{opacity:.75}
+.detail-hero{position:relative; aspect-ratio:16/8; overflow:hidden; background:var(--muted)}
+.detail-hero img{width:100%; height:100%; object-fit:cover}
+.detail-head{display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap; margin-top:30px}
+.detail-head h2{font-size:clamp(1.8rem,3.8vw,2.6rem)}
+.detail-loc{color:var(--kicker-light); font-weight:700; font-size:.88rem; letter-spacing:.08em; text-transform:uppercase; display:block; margin-top:8px}
+.status-pill{background:var(--accent); color:var(--accent-foreground); font-weight:800; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; padding:8px 16px; white-space:nowrap}
+.detail-lead{margin-top:22px; max-width:68ch; font-size:1.08rem; color:var(--fg); opacity:.88}
+.detail-note{margin-top:18px; max-width:68ch; font-size:.92rem; color:var(--kicker-light); font-style:italic}
+.detail-stats{display:flex; gap:16px; flex-wrap:wrap; margin-top:30px}
+.detail-stats div{background:var(--muted); padding:18px 22px; min-width:140px}
+.detail-stats div strong{display:block; font-family:var(--font-display); font-size:1.5rem; color:var(--primary)}
+.detail-stats div span{font-size:.8rem; color:var(--kicker-light); text-transform:uppercase; letter-spacing:.05em}
+.detail-related{margin-top:34px; padding-top:22px; border-top:1px solid var(--border); font-size:.98rem}
+.detail-related a{color:var(--primary); font-weight:700; text-decoration:underline}
+</style>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#inicio">
+      <span class="logo-box"><img src="photos/logo.jpg" alt="Instituto Biogreen"></span>
+    </a>
+    <nav class="primary" id="primaryNav">
+      <a href="#instituto">O Instituto</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#atuacao">Atuação</a>
+      <a href="#equipe">Equipe</a>
+      <a class="icon-link" href="https://www.instagram.com/institutobiogreen" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+      </a>
+      <a class="btn btn-accent mobile-cta" href="https://wa.me/5531998629952?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Instituto%20Biogreen." target="_blank" rel="noopener">Fale conosco</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-accent" href="https://wa.me/5531998629952?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Instituto%20Biogreen." target="_blank" rel="noopener">Fale conosco</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <svg id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div id="homeView">
+
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <span class="kicker on-dark">Instituto Biogreen · desde 2022</span>
+      <h1 style="margin-top:20px">Cultivar hoje.<br><span class="italic-accent">Transformar o amanhã.</span></h1>
+      <p class="lead justify">Ciência, educação e ação ambiental conectadas para regenerar territórios e melhorar a vida das pessoas.</p>
+      <div class="cta-row">
+        <a class="btn btn-accent" href="#instituto">Conheça nosso trabalho</a>
+        <a class="btn btn-outline-light" href="#projetos">Ver projetos</a>
+      </div>
+      <div class="scroll-cue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+        Role para explorar
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream" id="instituto">
+    <div class="wrap">
+      <span class="kicker on-light"><span class="rule"></span>01 · O Instituto</span>
+      <h2 style="margin-top:20px; font-size:clamp(1.9rem,4.2vw,2.9rem)">Conhecimento que sai do papel e<br><span class="italic-accent" style="color:var(--primary)">ganha o território.</span></h2>
+      <div class="intro-cols">
+        <p class="justify">Somos uma organização social sem fins lucrativos, fundada em 22 de março de 2022 por uma equipe multidisciplinar de pesquisadores.</p>
+        <p class="justify">Unimos defesa do meio ambiente, agricultura sustentável, pesquisa e desenvolvimento e educação ambiental para desenvolver soluções socioambientais.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="photo"><img src="photos/pilar-meio-ambiente.jpg" alt="Meio ambiente"></div>
+          <div class="meta">
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span>
+            <span class="num">01</span>
+            <h4>Meio ambiente</h4>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="photo"><img src="photos/pilar-agricultura.jpg" alt="Agricultura sustentável"></div>
+          <div class="meta">
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"></path><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path></svg></span>
+            <span class="num">02</span>
+            <h4>Agricultura sustentável</h4>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="photo"><img src="photos/pilar-pesquisa.jpg" alt="Pesquisa e desenvolvimento"></div>
+          <div class="meta">
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg></span>
+            <span class="num">03</span>
+            <h4>Pesquisa e desenvolvimento</h4>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="photo"><img src="photos/pilar-educacao.jpg" alt="Educação ambiental"></div>
+          <div class="meta">
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"></path><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"></path><path d="m14 16-3 3 3 3"></path><path d="M8.293 13.596 7.196 9.5 3.1 10.598"></path><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"></path><path d="m13.378 9.633 4.096 1.098 1.097-4.096"></path></svg></span>
+            <span class="num">04</span>
+            <h4>Educação ambiental</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-primary" id="projetos">
+    <div class="wrap">
+      <span class="kicker on-dark">02 · Projetos</span>
+      <h2 style="margin-top:20px; font-size:clamp(1.9rem,4.2vw,2.9rem); color:var(--primary-foreground)">Onde a ciência<br><span class="italic-accent">encontra o território.</span></h2>
+      <p class="justify" style="max-width:56ch; margin-top:20px; opacity:.92; font-size:1.05rem">Cada projeto do Instituto Biogreen nasce de um diagnóstico técnico rigoroso e se traduz em ação concreta para comunidades e ecossistemas.</p>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="wrap">
+      <div class="proj-list">
+
+        <article class="proj-article">
+          <div class="photo-wrap">
+            <span class="proj-status">Finalizado</span>
+            <img src="photos/aguas-itabirito.jpg" alt="Águas de Itabirito">
+          </div>
+          <div class="proj-body">
+            <div class="proj-loc-row">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 8.35A8 8 0 1 1 6.34 8.35z"></path></svg></span>
+              <span class="proj-loc">Itabirito · MG</span>
+            </div>
+            <h3>Águas de Itabirito</h3>
+            <p class="desc justify">Segurança hídrica e desenvolvimento sustentável no campo por meio de barraginhas, manejo conservacionista e acompanhamento técnico contínuo.</p>
+            <div class="proj-stats">
+              <div><strong>208</strong><span>Barraginhas</span></div>
+              <div><strong>25</strong><span>Famílias</span></div>
+              <div><strong>50</strong><span>Novas estruturas</span></div>
+            </div>
+            <a class="proj-link" href="#aguas-de-itabirito">Ver projeto completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="proj-article">
+          <div class="photo-wrap">
+            <span class="proj-status">Em andamento</span>
+            <img src="photos/aguas-itabirito.jpg" alt="Águas de Minas">
+          </div>
+          <div class="proj-body">
+            <div class="proj-loc-row">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 8.35A8 8 0 1 1 6.34 8.35z"></path></svg></span>
+              <span class="proj-loc">Itabirito, Brumadinho e Ouro Preto · MG</span>
+            </div>
+            <h3>Águas de Minas</h3>
+            <p class="desc justify">Continuidade do Águas de Itabirito, ampliando a segurança hídrica e o manejo conservacionista de barraginhas para três novos municípios de Minas Gerais.</p>
+            <a class="proj-link" href="#aguas-de-minas">Ver projeto completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="proj-article">
+          <div class="photo-wrap">
+            <span class="proj-status">Em andamento</span>
+            <img src="photos/aguas-itabirito.jpg" alt="Recarga Hídrica">
+          </div>
+          <div class="proj-body">
+            <div class="proj-loc-row">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 8.35A8 8 0 1 1 6.34 8.35z"></path></svg></span>
+              <span class="proj-loc">Bugre · MG</span>
+            </div>
+            <h3>Recarga Hídrica</h3>
+            <p class="desc justify">Construção de barraginhas para recarga do lençol freático, mantendo nascentes vivas e solos produtivos no campo.</p>
+            <a class="proj-link" href="#recarga-hidrica">Ver projeto completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="proj-article">
+          <div class="photo-wrap">
+            <span class="proj-status">Em desenvolvimento</span>
+            <img src="photos/zero-lixo.jpg" alt="Projeto Zero Lixo">
+          </div>
+          <div class="proj-body">
+            <div class="proj-loc-row">
+              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"></path><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"></path><path d="m14 16-3 3 3 3"></path><path d="M8.293 13.596 7.196 9.5 3.1 10.598"></path><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"></path><path d="m13.378 9.633 4.096 1.098 1.097-4.096"></path></svg></span>
+              <span class="proj-loc">Governador Valadares · MG</span>
+            </div>
+            <h3>Projeto Zero Lixo</h3>
+            <p class="desc justify">Uma proposta integrada de coleta seletiva, reciclagem e compostagem para transformar resíduos em oportunidade, renda e qualidade ambiental.</p>
+            <div class="proj-stats">
+              <div><strong>38 t</strong><span>Capacidade/dia</span></div>
+              <div><strong>30 t</strong><span>Processadas/dia</span></div>
+              <div><strong>20+</strong><span>Empregos diretos</span></div>
+            </div>
+            <a class="proj-link" href="#zero-lixo">Ver projeto completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="wrap">
+      <div class="method-head">
+        <span class="kicker on-dark">Metodologia</span>
+        <h3 style="margin-top:16px; font-size:clamp(1.3rem,2.6vw,1.9rem); color:var(--secondary-foreground)">Como transformamos ciência em impacto real.</h3>
+      </div>
+      <div class="method-grid">
+        <div><span>01</span><h5>Diagnóstico</h5><p>Levantamento técnico e científico das condições ambientais, sociais e econômicas do território.</p></div>
+        <div><span>02</span><h5>Engajamento comunitário</h5><p>Construção coletiva de soluções junto às famílias, cooperativas e lideranças locais.</p></div>
+        <div><span>03</span><h5>Implementação</h5><p>Execução de estruturas, manejo e tecnologias sociais com acompanhamento técnico contínuo.</p></div>
+        <div><span>04</span><h5>Monitoramento</h5><p>Avaliação de indicadores de impacto para garantir resultados duradouros e replicáveis.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream" id="atuacao">
+    <div class="wrap">
+      <span class="kicker on-light"><span class="rule"></span>03 · Atuação</span>
+      <h2 style="margin-top:20px; font-size:clamp(1.9rem,4.2vw,2.9rem)">Da análise<br><span class="italic-accent" style="color:var(--primary)">à ação.</span></h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <span class="num">01</span>
+          <h4>Consultoria ambiental</h4>
+          <p class="justify">Orientação, competência técnica e soluções para organizações e projetos que enfrentam desafios ambientais.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">02</span>
+          <h4>Relatórios ambientais</h4>
+          <p class="justify">Documentação clara de informações relevantes sobre o estado ambiental de áreas, projetos e atividades.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">03</span>
+          <h4>Estudos ambientais</h4>
+          <p class="justify">Avaliação de impactos, identificação de medidas de mitigação e apoio ao cumprimento das regulamentações.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section muted" id="equipe">
+    <div class="wrap">
+      <span class="kicker on-light"><span class="rule"></span>04 · Equipe multidisciplinar</span>
+      <h2 style="margin-top:20px; font-size:clamp(1.9rem,4.2vw,2.9rem)">Pessoas que transformam<br><span class="italic-accent" style="color:var(--primary)">ciência em cuidado.</span></h2>
+      <p class="justify" style="max-width:56ch; margin-top:20px; opacity:.82; font-size:1.05rem">Um grupo multidisciplinar de pesquisadores dedicado a levar conhecimento técnico para dentro dos territórios.</p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="avatar" style="background:var(--primary)">BR</div>
+          <span class="role">Presidente</span>
+          <h4>Bruno Moisés Alves Ribeiro</h4>
+          <span class="cred">Bacharel em Engenharia Sanitária e Ambiental</span>
+        </div>
+        <div class="team-card">
+          <div class="avatar" style="background:#8a6d1f">KF</div>
+          <span class="role">Diretor Executivo</span>
+          <h4>Dr. Kenner Morais Fernandes</h4>
+          <span class="cred">Doutor em Biologia Celular e Estrutural</span>
+        </div>
+        <div class="team-card">
+          <div class="avatar" style="background:var(--secondary)">JR</div>
+          <span class="role">Diretora Financeira</span>
+          <h4>Jennifer Kelle Alves Ribeiro</h4>
+          <span class="cred">Engenheira Civil</span>
+        </div>
+        <div class="team-card">
+          <div class="avatar" style="background:var(--primary)">FM</div>
+          <span class="role">1ª Conselheira</span>
+          <h4>Franciane Rosa Miranda</h4>
+          <span class="cred">Mestre em Biologia Celular e Estrutural</span>
+        </div>
+        <div class="team-card">
+          <div class="avatar" style="background:#8a6d1f">CG</div>
+          <span class="role">2º Conselheiro</span>
+          <h4>Dr. Cliver Fernandes Farder Gomes</h4>
+          <span class="cred">Doutor em Entomologia</span>
+        </div>
+        <div class="team-card">
+          <div class="avatar" style="background:var(--secondary)">MM</div>
+          <span class="role">3º Conselheiro</span>
+          <h4>Dr. Marcos Jorge de Magalhães Junior</h4>
+          <span class="cred">Doutor em Bioquímica Aplicada</span>
+        </div>
+      </div>
+
+      <div class="values-wrap">
+        <span class="kicker on-light">O que nos guia</span>
+        <h3 style="margin-top:14px; font-size:clamp(1.3rem,2.6vw,1.9rem)">Valores que sustentam cada projeto.</h3>
+        <div class="values-grid">
+          <div><h5>Rigor científico</h5><p class="justify">Toda ação parte de evidência técnica, pesquisa aplicada e acompanhamento de resultados.</p></div>
+          <div><h5>Compromisso territorial</h5><p class="justify">Trabalhamos ao lado das comunidades, respeitando seus saberes e necessidades locais.</p></div>
+          <div><h5>Educação contínua</h5><p class="justify">Formamos pessoas e disseminamos conhecimento para multiplicar o impacto ambiental.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="contato">
+    <div class="wrap">
+      <span class="kicker on-dark">06 · Junte-se a nós</span>
+      <h2 style="margin-top:20px; font-size:clamp(1.9rem,4.2vw,2.8rem); color:var(--secondary-foreground)">Vamos construir juntos?</h2>
+      <p style="margin-top:16px; opacity:.85; font-size:1.05rem">Toda transformação começa com uma conversa.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span class="label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>Escreva para nós</span>
+          <span class="value">institutobiogreen@gmail.com</span>
+          <div class="action"><button class="copy-btn" data-copy="institutobiogreen@gmail.com">Copiar e-mail</button></div>
+        </div>
+        <div class="contact-card">
+          <span class="label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>WhatsApp Business</span>
+          <span class="value">(31) 99862-9952</span>
+          <div class="action"><a class="copy-btn" style="text-decoration:none; display:inline-block" href="https://wa.me/5531998629952?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Instituto%20Biogreen." target="_blank" rel="noopener">Abrir conversa</a></div>
+        </div>
+        <div class="contact-card">
+          <span class="label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>Instagram</span>
+          <span class="value">@institutobiogreen</span>
+          <div class="action"><a class="copy-btn" style="text-decoration:none; display:inline-block" href="https://instagram.com/institutobiogreen" target="_blank" rel="noopener">Abrir perfil</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /#homeView -->
+
+<section class="project-page" id="aguas-de-itabirito" data-slug="aguas-de-itabirito" hidden>
+  <div class="wrap">
+    <a class="back-link" href="#projetos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar para Projetos</a>
+    <div class="detail-hero"><img src="photos/aguas-itabirito.jpg" alt="Águas de Itabirito"></div>
+    <div class="detail-head">
+      <div><h2>Águas de Itabirito</h2><span class="detail-loc">Itabirito · MG</span></div>
+      <span class="status-pill">Finalizado</span>
+    </div>
+    <p class="detail-lead justify">Projeto pioneiro de segurança hídrica rural do Instituto Biogreen, hoje concluído. Famílias do campo em Itabirito passaram a contar com barraginhas para infiltração de água, manejo conservacionista e acompanhamento técnico contínuo, reduzindo a erosão e fortalecendo nascentes em propriedades rurais.</p>
+    <div class="detail-stats">
+      <div><strong>208</strong><span>Barraginhas</span></div>
+      <div><strong>25</strong><span>Famílias atendidas</span></div>
+      <div><strong>50</strong><span>Novas estruturas</span></div>
+    </div>
+    <div class="detail-related">Com o projeto concluído, a atuação do Instituto segue e se amplia através do <a href="#aguas-de-minas">Águas de Minas</a>.</div>
+  </div>
+</section>
+
+<section class="project-page" id="aguas-de-minas" data-slug="aguas-de-minas" hidden>
+  <div class="wrap">
+    <a class="back-link" href="#projetos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar para Projetos</a>
+    <div class="detail-hero"><img src="photos/aguas-itabirito.jpg" alt="Águas de Minas"></div>
+    <div class="detail-head">
+      <div><h2>Águas de Minas</h2><span class="detail-loc">Itabirito, Brumadinho e Ouro Preto · MG</span></div>
+      <span class="status-pill">Em andamento</span>
+    </div>
+    <p class="detail-lead justify">Continuidade natural do Águas de Itabirito: o projeto amplia a construção de barraginhas e o manejo conservacionista para três municípios mineiros — Itabirito, Brumadinho e Ouro Preto — levando a mesma metodologia de segurança hídrica para novos territórios rurais.</p>
+    <p class="detail-note justify">Foto ilustrativa: mesma metodologia de barraginhas aplicada no Águas de Itabirito.</p>
+    <div class="detail-related">Este projeto é a continuidade do <a href="#aguas-de-itabirito">Águas de Itabirito</a>, já finalizado.</div>
+  </div>
+</section>
+
+<section class="project-page" id="recarga-hidrica" data-slug="recarga-hidrica" hidden>
+  <div class="wrap">
+    <a class="back-link" href="#projetos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar para Projetos</a>
+    <div class="detail-hero"><img src="photos/aguas-itabirito.jpg" alt="Recarga Hídrica"></div>
+    <div class="detail-head">
+      <div><h2>Recarga Hídrica</h2><span class="detail-loc">Bugre · MG</span></div>
+      <span class="status-pill">Em andamento</span>
+    </div>
+    <p class="detail-lead justify">Projeto fixo e ativo do Instituto Biogreen na cidade de Bugre, em Minas Gerais. Consiste na construção de barraginhas que favorecem a infiltração da água da chuva no solo, recarregando o lençol freático, mantendo nascentes vivas e preservando a produtividade dos solos rurais da região.</p>
+    <p class="detail-note justify">Foto ilustrativa: mesma metodologia de barraginhas aplicada no Águas de Itabirito.</p>
+    <div class="detail-related">Conheça também o <a href="#aguas-de-minas">Águas de Minas</a>, outra frente de segurança hídrica do Instituto.</div>
+  </div>
+</section>
+
+<section class="project-page" id="zero-lixo" data-slug="zero-lixo" hidden>
+  <div class="wrap">
+    <a class="back-link" href="#projetos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar para Projetos</a>
+    <div class="detail-hero"><img src="photos/zero-lixo.jpg" alt="Projeto Zero Lixo"></div>
+    <div class="detail-head">
+      <div><h2>Projeto Zero Lixo</h2><span class="detail-loc">Governador Valadares · MG</span></div>
+      <span class="status-pill">Em desenvolvimento</span>
+    </div>
+    <p class="detail-lead justify">Iniciativa de economia circular que integra coleta seletiva, reciclagem e compostagem, transformando resíduos em oportunidade, renda e qualidade ambiental — reduzindo o volume enviado a aterros e fortalecendo uma cadeia produtiva local mais sustentável.</p>
+    <div class="detail-stats">
+      <div><strong>38 t</strong><span>Capacidade/dia</span></div>
+      <div><strong>30 t</strong><span>Processadas/dia</span></div>
+      <div><strong>20+</strong><span>Empregos diretos</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="flex-col">
+      <img class="logo-white" src="logo-white.png" alt="Instituto Biogreen">
+      <span class="tagline">Juntos por mais água, mais vida e mais futuro.</span>
+    </div>
+    <div class="fine">
+      © 2026 Instituto Biogreen. Todos os direitos reservados.<br>
+      Organização social sem fins lucrativos · Fundada em 22 de março de 2022
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('primaryNav');
+  var icon = document.getElementById('menuIcon');
+  function closeMenu(){
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    icon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
+  }
+  function openMenu(){
+    nav.classList.add('open');
+    toggle.setAttribute('aria-expanded','true');
+    icon.innerHTML = '<path d="M6 6l12 12M18 6L6 18"></path>';
+  }
+  toggle.addEventListener('click', function(){
+    nav.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Active section highlight
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var id = '#' + entry.target.id;
+        var link = links.find(function(a){ return a.getAttribute('href') === id; });
+        if (!link) return;
+        if (entry.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.getAttribute('data-copy');
+      var original = btn.textContent;
+      function done(ok){
+        btn.textContent = ok ? 'Copiado!' : 'Selecione e copie';
+        setTimeout(function(){ btn.textContent = original; }, 1800);
+      }
+      try{
+        navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+      }catch(e){ done(false); }
+    });
+  });
+
+  // Project detail page router
+  var homeView = document.getElementById('homeView');
+  var projectPages = Array.prototype.slice.call(document.querySelectorAll('.project-page'));
+  function routeHash(){
+    var hash = location.hash.replace('#','');
+    var target = projectPages.find(function(p){ return p.id === hash; });
+    if (target){
+      homeView.hidden = true;
+      projectPages.forEach(function(p){ p.hidden = (p !== target); });
+      window.scrollTo(0,0);
+    } else {
+      homeView.hidden = false;
+      projectPages.forEach(function(p){ p.hidden = true; });
+      if (hash){
+        var el = document.getElementById(hash);
+        if (el){
+          requestAnimationFrame(function(){ el.scrollIntoView({behavior:'auto', block:'start'}); });
+        }
+      }
+    }
+  }
+  window.addEventListener('hashchange', routeHash);
+  routeHash();
+})();
+</script>
+
+</body></html>
